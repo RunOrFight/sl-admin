@@ -1,14 +1,9 @@
-import {Dialog, DialogContent, DialogTitle,} from "@/components/ui/dialog"
+"use client"
+
+import {CreateUserModalWindow} from "../features/user/ui/create-user-modal-window";
 
 
 export default function Home() {
-    return (
-        <Dialog open>
-            <DialogContent className="sm:max-w-[425px]">
-                <DialogTitle>
-                    {"Hello World!"}
-                </DialogTitle>
-            </DialogContent>
-        </Dialog>
-    )
+
+    return <CreateUserModalWindow/>
 }
