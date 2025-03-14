@@ -1,25 +1,26 @@
-import {
-  Button,
-  ModalWindow,
-  type ModalWindowRenderTriggerProps,
-} from "@/shared/ui";
-import { CreateUserForm } from "./create-user-form";
+import { Button, ModalWindow, type ModalWindowRenderProps } from "@/shared/ui";
+import { CreateUserForm } from "@/features/user";
+import { TEXT } from "@/shared/model";
 
-const creteUserModalTrigger = ({
+const renderCreteUserModalTrigger = ({
   openWindow,
-}: ModalWindowRenderTriggerProps) => {
-  return (
-    <Button onClick={openWindow} className={"hover:cursor-pointer"}>
-      {"Create User"}
-    </Button>
-  );
-};
+}: ModalWindowRenderProps) => (
+  <Button onClick={openWindow} className={"hover:cursor-pointer"}>
+    {TEXT.createUser}
+  </Button>
+);
+
+const renderCreteUserModalContent = ({
+  closeWindow,
+}: ModalWindowRenderProps) => <CreateUserForm onCreateSuccess={closeWindow} />;
 
 export const CreateUserModalWindow = () => {
   return (
-    <ModalWindow renderTrigger={creteUserModalTrigger} title={"Create User"}>
-      ;
-      <CreateUserForm />
+    <ModalWindow
+      renderTrigger={renderCreteUserModalTrigger}
+      title={TEXT.createUser}
+    >
+      {renderCreteUserModalContent}
     </ModalWindow>
   );
 };

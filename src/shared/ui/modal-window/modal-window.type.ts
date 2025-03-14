@@ -1,3 +1,6 @@
 import { VoidFunction } from "@/shared/lib";
 
-export type ModalWindowRenderTriggerProps = { openWindow: VoidFunction };
+export type ModalWindowRenderProps = {
+  openWindow: VoidFunction;
+  closeWindow: VoidFunction;
+};

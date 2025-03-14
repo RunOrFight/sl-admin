@@ -1,12 +1,13 @@
-import { Dialog, DialogContent, DialogHeader, DialogTitle } from "../dialog";
-import { PropsWithChildren, ReactNode, useCallback, useState } from "react";
-import { ModalWindowRenderTriggerProps } from "./modal-window.type";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/shared/ui";
+import { ReactNode, useCallback, useState } from "react";
+import { ModalWindowRenderProps } from "./modal-window.type";
 
-type ModalWindowProps = PropsWithChildren<{
-  renderTrigger: ({ openWindow }: ModalWindowRenderTriggerProps) => ReactNode;
+type ModalWindowProps = {
+  children: (props: ModalWindowRenderProps) => ReactNode;
+  renderTrigger: ({ openWindow }: ModalWindowRenderProps) => ReactNode;
   //`DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
   title: ReactNode;
-}>;
+};
 
 export const ModalWindow = ({
   renderTrigger,
@@ -19,14 +20,20 @@ export const ModalWindow = ({
     setIsOpen(true);
   }, [setIsOpen]);
 
+  const closeWindow = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
+
+  const props = { openWindow, closeWindow };
+
   return (
     <Dialog open={isOpen} onOpenChange={setIsOpen}>
-      {renderTrigger({ openWindow })}
-      <DialogContent>
+      {renderTrigger(props)}
+      <DialogContent aria-describedby={undefined}>
         <DialogHeader>
           <DialogTitle>{title}</DialogTitle>
         </DialogHeader>
-        {children}
+        {children(props)}
       </DialogContent>
     </Dialog>
   );
