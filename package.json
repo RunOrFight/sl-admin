@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "format": "npx prettier . --write",
-    "prepare": "husky"
+    "format": "prettier . --write",
+    "prepare": "husky",
+    "style": "stylelint **/*.css --fix --allow-empty-input"
   },
   "dependencies": {
     "@radix-ui/react-dialog": "^1.1.6",
@@ -34,6 +35,8 @@
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",
     "prettier": "3.5.3",
+    "stylelint": "^16.16.0",
+    "stylelint-config-standard": "^37.0.0",
     "tailwindcss": "^4",
     "typescript": "^5"
   },
