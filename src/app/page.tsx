@@ -1,9 +1,7 @@
-"use client"
+"use client";
 
-import {CreateUserModalWindow} from "../features/user/ui/create-user-modal-window";
-
+import { CreateUserModalWindow } from "../features/user/ui/create-user-modal-window";
 
 export default function Home() {
-
-    return <CreateUserModalWindow/>
+  return <CreateUserModalWindow />;
 }

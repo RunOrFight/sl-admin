@@ -1,22 +1,21 @@
-import {Dialog, DialogContent} from "./dialog";
-import { PropsWithChildren, ReactNode, useCallback, useState} from "react";
+import { Dialog, DialogContent } from "./dialog";
+import { PropsWithChildren, ReactNode, useCallback, useState } from "react";
 
 type ModalWindowProps = PropsWithChildren<{
-    renderTrigger: ({ triggerOpen })=>ReactNode
-}>
+  renderTrigger: ({ triggerOpen }) => ReactNode;
+}>;
 
-export const ModalWindow = ({renderTrigger}: ModalWindowProps) => {
-    const [open, setOpen] = useState(false)
+export const ModalWindow = ({ renderTrigger }: ModalWindowProps) => {
+  const [open, setOpen] = useState(false);
 
-    const triggerOpen = useCallback(()=>{
-        setOpen(true)
-    },[])
+  const triggerOpen = useCallback(() => {
+    setOpen(true);
+  }, []);
 
-    return (
-        <Dialog open={open} onOpenChange={setOpen}>
-            {renderTrigger({triggerOpen })}
-            <DialogContent>
-            </DialogContent>
-        </Dialog>
-    )
-}
+  return (
+    <Dialog open={open} onOpenChange={setOpen}>
+      {renderTrigger({ triggerOpen })}
+      <DialogContent></DialogContent>
+    </Dialog>
+  );
+};
