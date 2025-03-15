@@ -4,7 +4,7 @@ import { ModalWindowRenderProps } from "./modal-window.type";
 
 type ModalWindowProps = {
   children: (props: ModalWindowRenderProps) => ReactNode;
-  renderTrigger: ({ openWindow }: ModalWindowRenderProps) => ReactNode;
+  renderTrigger: (props: ModalWindowRenderProps) => ReactNode;
   //`DialogContent` requires a `DialogTitle` for the component to be accessible for screen reader users.
   title: ReactNode;
 };
